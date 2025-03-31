@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Manage Documents</h2>
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+            <input type="file" name="document" required>
+            <button type="submit" class="btn">Upload</button>
+        </form>
+        <h3>Uploaded Documents</h3>
+        <table>
+            <tr>
+                <th>Document Name</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>example.pdf</td>
+                <td>
+                    <a href="#" class="btn">View</a>
+                    <a href="#" class="btn">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
