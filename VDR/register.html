@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="title"> VIRTUAL DEAL ROOM</div>
+    <div class="container">
+        <h2>Register</h2>
+        <form id="registerForm" action="register.php" method="POST">
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <input type="password" name="password" placeholder="Enter password" required>
+            <select name="role" required>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+            </select>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let formData = new FormData(this);
+
+        fetch("register.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json()) // Expect JSON response
+        .then(data => {
+            console.log("Server Response:", data);
+            alert(data.message);
+            if (data.status === "success") {
+                window.location.href = "success.php"; // Redirect after successful registration
+            }
+        })
+        .catch(error => console.error("Fetch Error:", error));
+    });
+    </script>
+</body>
+</html>
